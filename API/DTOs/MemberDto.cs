@@ -28,6 +28,8 @@ namespace API.DTOs
 
         public string City { get; set; }
 
+        public string LookingFor { get; set; }
+
         public ICollection<PhotoDto> Photos { get; set; }
     }
 }
