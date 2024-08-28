@@ -78,8 +78,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "sslKey": "E:/DatingApp/client/ssl/server.key",
-            "sslCert": "E:/DatingApp/client/ssl/server.crt",
+            "sslKey": "ssl/server.key",
+            "sslCert": "ssl/server.crt",
             "ssl":true
           },
           "configurations": {
@@ -118,5 +118,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
