@@ -24,7 +24,7 @@ namespace API.Data
             return await _context.Likes.FindAsync(sourceUserId, likedUserId);
         }
 
-        public async Task<PagedList<LikeDTO>> GetUserLikes(LikesParams likesParams)
+        public async Task<PagedList<LikeDto>> GetUserLikes(LikesParams likesParams)
         {
             var users = _context.Users.OrderBy(u => u.UserName).AsQueryable();
             var likes = _context.Likes.AsQueryable();
@@ -41,7 +41,7 @@ namespace API.Data
                 users = likes.Select(like => like.SourceUser);   
             }
 
-           var likedUsers = users.Select(user => new LikeDTO
+           var likedUsers = users.Select(user => new LikeDto
             {
                 UserName = user.UserName,
                 KnownAs = user.KnownAs,
@@ -51,7 +51,7 @@ namespace API.Data
                 Id = user.Id
             });
 
-            return await PagedList<LikeDTO>.CreateAsync(likedUsers,likesParams.pageNumber,likesParams.PageSize);
+            return await PagedList<LikeDto>.CreateAsync(likedUsers,likesParams.pageNumber,likesParams.PageSize);
         }
 
         public async Task<AppUser> GetUserWithLikes(int userId)
